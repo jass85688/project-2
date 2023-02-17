@@ -3,7 +3,7 @@ pipeline {
 	stages {
 	stage("Jaspal Singh - Build Docker Image"){
 		steps {
-		sh "docker build -t myimage/jaspalsingh"		
+		sh "docker build -t myimage/jaspalsingh ."		
 		}
 	}
     stage("Jaspal Singh - Login to Dockerhub"){
