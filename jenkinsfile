@@ -1,0 +1,28 @@
+pipeline {
+	agent any
+	stages {
+	stage("Jaspal Singh - Build Docker Image"){
+		steps {
+		sh "docker build -t myimage/jaspalsingh"		
+		}
+	}
+    stage("Jaspal Singh - Login to Dockerhub"){
+		steps {
+		withCredentials([string(credentialsId: 'docker-hub', variable: 'dockerhubpwd')]) {
+			sh "docker Login -u jasssarinh -p ${dockerhubpwd}"
+			sh "echo login successful"
+		}
+		}
+	}
+    stage("Jaspal Singh - Push Image to Dockerhub"){
+		steps {
+		sh "echo hello from jenkins pipeline"
+		// sh export PATH="/c/Users/harsi/AppData/Local/Programs/Python/Python310/python"
+	
+		sh "python3 --version"
+		sh "python3 ppfile.py"
+		}
+	}
+    
+}
+}
