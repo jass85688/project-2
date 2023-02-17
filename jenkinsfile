@@ -9,18 +9,16 @@ pipeline {
     stage("Jaspal Singh - Login to Dockerhub"){
 		steps {
 		withCredentials([string(credentialsId: 'docker-hub', variable: 'dockerhubpwd')]) {
-			sh "docker Login -u jasssarinh -p ${dockerhubpwd}"
-			sh "echo login successful"
+			sh "docker Login -u jasssarinh -p King1996@"
+			
 		}
 		}
 	}
     stage("Jaspal Singh - Push Image to Dockerhub"){
 		steps {
-		sh "echo hello from jenkins pipeline"
-		// sh export PATH="/c/Users/harsi/AppData/Local/Programs/Python/Python310/python"
-	
-		sh "python3 --version"
-		sh "python3 ppfile.py"
+		
+		sh "docker tag myimage/jaspalsingh jasssarinh/my-test-rep:v0.1"
+		sh "docker push jasssarinh/my-test-repo:v0.1"
 		}
 	}
     
